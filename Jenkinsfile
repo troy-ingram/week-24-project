@@ -76,7 +76,7 @@ pipeline {
             }
         
         steps {
-           sh "terraform destroy -input=false tfplan"
+           sh "terraform destroy --auto-approve"
         }
     }
 

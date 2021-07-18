@@ -62,7 +62,6 @@ pipeline {
             when {
                 equals expected: true, actual: params.destroy
             }
-        }
         
         steps {
            sh "terraform apply -input=false tfplan"

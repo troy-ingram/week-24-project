@@ -1,4 +1,5 @@
 pipeline {
+    agent any
 
     parameters {
         string(name: 'environment', defaultValue: 'terraform', description: 'Workspace/environment file to use for deployment')
@@ -12,11 +13,7 @@ pipeline {
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
     }
 
-   agent  any
-        options {
-                timestamps ()
-                ansiColor('xterm')
-            }
+
     stages {
         stage('checkout') {
             steps {

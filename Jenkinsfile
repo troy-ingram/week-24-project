@@ -28,6 +28,12 @@ pipeline {
             }
 
         stage('Plan') {
+            when {
+                not {
+                    equals expected: true, actual: params.destroy
+                }
+            }
+            
             steps {
                 sh 'terraform init -input=false'
 
@@ -53,6 +59,12 @@ pipeline {
        }
 
         stage('Apply') {
+            when {
+                not {
+                    equals expected: true, actual: params.destroy
+                }
+            }
+            
             steps {
                 sh "terraform apply -input=false tfplan"
             }

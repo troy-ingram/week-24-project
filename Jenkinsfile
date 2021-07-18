@@ -28,11 +28,11 @@ pipeline {
 
         stage('Plan') {
             steps {
-                sh 'pwd;cd troy-ingram/week-24-project ; terraform init -input=false'
-                sh 'pwd;cd troy-ingram/week-24-project ; terraform workspace new ${environment}'
-                sh 'pwd;cd troy-ingram/week-24-project ; terraform workspace select ${environment}'
-                sh "pwd;cd troy-ingram/week-24-project ;terraform plan -input=false -out tfplan "
-                sh 'pwd;cd troy-ingram/week-24-project ;terraform show -no-color tfplan > tfplan.txt'
+                sh 'terraform init -input=false'
+                sh 'terraform workspace new ${environment}'
+                sh 'terraform workspace select ${environment}'
+                sh "terraform plan -input=false -out tfplan "
+                sh 'terraform show -no-color tfplan > tfplan.txt'
             }
         }
         stage('Approval') {
@@ -44,7 +44,7 @@ pipeline {
 
            steps {
                script {
-                    def plan = readFile 'troy-ingram/week-24-project/tfplan.txt'
+                    def plan = readFile 'tfplan.txt'
                     input message: "Do you want to apply the plan?",
                     parameters: [text(name: 'Plan', description: 'Please review the plan', defaultValue: plan)]
                }
@@ -53,7 +53,7 @@ pipeline {
 
         stage('Apply') {
             steps {
-                sh "pwd;cd troy-ingram/week-24-project ; terraform apply -input=false tfplan"
+                sh "terraform apply -input=false tfplan"
             }
         }
     }

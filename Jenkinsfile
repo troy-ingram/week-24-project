@@ -48,6 +48,11 @@ pipeline {
                    equals expected: true, actual: params.autoApprove
                }
            }
+           when {
+                not {
+                    equals expected: true, actual: params.destroy
+                }
+            }
 
            steps {
                script {

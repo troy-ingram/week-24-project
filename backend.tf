@@ -4,6 +4,6 @@ terraform {
   backend "s3" {
     bucket = " week-24-project-044"
     key    = "remote.tfstate"
-    region = "us-east-1"
+    region = "ap-south-1"
   }
 }

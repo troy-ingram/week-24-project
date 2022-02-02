@@ -11,8 +11,8 @@ module "compute" {
   web_sg        = module.networking.web_sg
   public_subnet = module.networking.public_subnet
 }
-module "s3" {
- source = "./s3"
- bucket name should be unique
- bucket_name = "joesstest123213333"       
-}
+#module "s3" {
+ #source = "./s3"
+ #bucket name should be unique
+ #bucket_name = "joesstest123213333"       
+#}

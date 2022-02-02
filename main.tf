@@ -10,9 +10,9 @@ module "compute" {
   source        = "./compute"
   web_sg        = module.networking.web_sg
   public_subnet = module.networking.public_subnet
-}
-module "s3" {
-  source = "./s3"
+#}
+#module "s3" {
+# source = "./s3"
   #bucket name should be unique
-  bucket_name = "joesstest1232133"       
-}
+#  bucket_name = "joesstest1232133"       
+#}

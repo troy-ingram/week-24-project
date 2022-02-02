@@ -13,6 +13,6 @@ module "compute" {
 }
 module "s3" {
  source = "./s3"
- bucket name should be unique
+ #bucket name should be unique
  bucket_name = "joesstest123213333"       
 }

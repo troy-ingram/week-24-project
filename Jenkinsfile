@@ -35,7 +35,7 @@ pipeline {
             }
             
             steps {
-                sh 'terraform init'
+                sh 'terraform -migrate-state'
                 sh 'terraform workspace select ${environment} || terraform workspace new ${environment}'
 
                 sh "terraform plan -input=false -out tfplan "
